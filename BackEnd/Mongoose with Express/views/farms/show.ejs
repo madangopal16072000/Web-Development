@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= farm.name %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+    <div class = "container">
+        <h1><%= farm.name %></h1>
+        <ul class = "list-group mb-3">
+            <li class = "list-group-item">City : <%= farm.city %></li>
+            <li class = "list-group-item">Email : <%= farm.email %></li>
+            <li class="list-group-item"><a href="/farms/<%=farm._id%>/products/new"><button class="btn btn-outline-warning">Add Product</button></a></li>
+        </ul>
+        <h2>Products</h2>
+        <ul class="list-group mb-3">
+            <% for(let product of farm.products) {%>
+            <li class="list-group-item" ><a href="/products/<%=product._id%>" style = "text-decoration: none;"><%= product.name %></a></li>
+            <%}%>
+        </ul>
+        <!-- <button type = "button" class = "btn btn-outline-primary mt-3"><a href = "/products">Back to All Product</a></button> -->
+        <a href="/farms"><button type = "button" class = "btn btn-outline-success">Back To All Farms</button></a>
+        <a href="/farms/<%= farm._id %>/edit"><button type = "button" class = "btn btn-outline-primary">Edit</button></a>
+        <form action = "/farms/<%= farm._id %>?_method=DELETE" method = "POST" style = "display: inline;">
+        <button class = "btn btn-danger">Delete</button>
+        </form>
+    </div>
+</body>
+</html>

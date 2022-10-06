@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product.name %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+    <div class = "container">
+        <h1><%= product.name %></h1>
+        <ul class = "list-group mb-3">
+            <li class = "list-group-item">Price : <%= product.price %></li>
+            <li class = "list-group-item">Category : <%= product.category %></li>
+        </ul>
+        <!-- <button type = "button" class = "btn btn-outline-primary mt-3"><a href = "/products">Back to All Product</a></button> -->
+        <a href="/products"><button type = "button" class = "btn btn-outline-primary">Back To All Products</button></a>
+        <a href="/products/<%= product._id %>/edit"><button type = "button" class = "btn btn-outline-warning">Edit</button></a>
+        <form action = "/products/<%= product._id %>?_method=DELETE" method = "POST" style = "display: inline;">
+        <button class = "btn btn-danger">Delete</button>
+        </form>
+    </div>
+</body>
+</html>
